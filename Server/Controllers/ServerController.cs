@@ -38,7 +38,6 @@ namespace HttpClientRedirect.Controllers
             return await PostInterceptor(path);
         }
 
-
         public async Task<IActionResult> GetInterceptor(string path)
         {
             using var client = httpClientFactory.CreateClient("NamedClient");
