@@ -17,7 +17,7 @@ namespace HttpClientRedirect.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return await GetInterceptor(string.Empty);
+            return await GetInterceptor();
         }
 
         [HttpGet("{*path}")]
@@ -29,7 +29,7 @@ namespace HttpClientRedirect.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            return await PostInterceptor(string.Empty);
+            return await PostInterceptor();
         }
 
         [HttpPost("{*path}")]
@@ -38,7 +38,7 @@ namespace HttpClientRedirect.Controllers
             return await PostInterceptor(path);
         }
 
-        public async Task<IActionResult> GetInterceptor(string path)
+        public async Task<IActionResult> GetInterceptor(string path = "")
         {
             using var client = httpClientFactory.CreateClient("NamedClient");
 
@@ -64,7 +64,7 @@ namespace HttpClientRedirect.Controllers
             }
         }
 
-        public async Task<IActionResult> PostInterceptor(string path)
+        public async Task<IActionResult> PostInterceptor(string path = "")
         {
             using var client = httpClientFactory.CreateClient("NamedClient");
 
